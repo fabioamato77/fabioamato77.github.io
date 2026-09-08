@@ -126,9 +126,10 @@
     stroke:var(--amber);
     stroke-width:1.6;
     stroke-linecap:round;
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    animation: draw 2.2s ease-out 0.2s forwards;
+    stroke-linejoin:miter;
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    animation: draw 4.5s linear 0.2s forwards;
   }
   @keyframes draw{ to{ stroke-dashoffset:0; } }
   @media (prefers-reduced-motion: reduce){
@@ -244,7 +245,7 @@
 
     <section class="hero">
       <h1>Visto che non so scrivere<br>uso i dati.</h1>
-      <p class="byline">di <strong>Fabio Amato</strong> — caporedattore ilfattoquotidiano.it</p>
+      <p class="byline"><strong>Fabio Amato</strong> — caporedattore ilfattoquotidiano.it</p>
       <p class="lede">
         Mi occupo di mappe interattive, dashboard e pipeline di analisi
         ilFattoQuotidiano.it: dati climatici, elezioni, abbonamenti e altri
@@ -252,7 +253,7 @@
       </p>
 
       <svg class="curve" viewBox="0 0 520 260" aria-hidden="true">
-        <path d="M20,60 C60,20 80,100 120,60 C160,20 180,100 220,60 C260,20 280,100 320,60 C350,45 365,70 380,80 C410,100 420,160 435,200 C445,225 440,245 450,255" />
+        <path d="M20,60 L60,20 L100,100 L140,60 L180,20 L220,100 L260,60 L300,20 L340,100 L380,80 L410,120 L430,170 L445,215 L450,255" />
       </svg>
 
       <div class="newsletter-block">
