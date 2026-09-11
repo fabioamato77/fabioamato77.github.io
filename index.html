@@ -137,9 +137,84 @@
     font-family:'IBM Plex Mono', monospace;
     fill: var(--ink);
     opacity:0;
-    animation: starFade 1s ease-out forwards;
+    animation: starFade 4s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.25s ease, fill 0.25s ease;
   }
-  @keyframes starFade{ to{ opacity:1; } }
+  .star-link{ cursor:pointer; }
+  .star-link:hover .star,
+  .star-link:focus .star{
+    animation-play-state: paused;
+    transform: scale(1.8);
+    fill: var(--amber);
+  }
+
+  .project-tooltip{
+    position:fixed;
+    z-index:80;
+    width:280px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-top:2px solid var(--amber);
+    box-shadow:0 18px 40px rgba(0,0,0,0.45);
+    pointer-events:none;
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity 0.18s ease, transform 0.18s ease;
+  }
+  .project-tooltip.visible{ opacity:1; transform:translateY(0); }
+  .project-tooltip-imgwrap{
+    width:100%;
+    height:165px;
+    background:#0c141c;
+    overflow:hidden;
+  }
+  .project-tooltip-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top;
+    display:block;
+    opacity:0;
+    transition:opacity 0.25s ease;
+  }
+  .project-tooltip-img.loaded{ opacity:1; }
+  .project-tooltip-body{
+    padding:12px 14px 14px;
+  }
+  .project-tooltip-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:16px;
+    line-height:1.25;
+    color:var(--ink);
+  }
+  .project-tooltip-url{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--teal);
+    margin-top:6px;
+    word-break:break-all;
+  }
+  .project-tooltip-hint{
+    display:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--amber);
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+  }
+  .project-tooltip.touch-mode .project-tooltip-hint{
+    display:block;
+  }
+  @keyframes starFade{
+    0%{ opacity:0; transform:scale(1); }
+    6%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.65; transform:scale(0.9); }
+    100%{ opacity:1; transform:scale(1); }
+  }
   @media (prefers-reduced-motion: reduce){
     .star{ animation:none; opacity:0; }
   }
@@ -276,20 +351,21 @@
               M40,30 L410,15 L150,200 L480,90 L90,140 L320,230 L20,220 L250,15 L470,200 L130,40 L380,140 L60,180 L220,110 L500,240 M293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 M179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1;
               M40,30 L410,15 L150,200 L480,90 L90,140 L320,230 L20,220 L250,15 L470,200 L130,40 L380,140 L60,180 L220,110 L500,240 M293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 L293.6,238.6 M179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1 L179.8,183.1" />
         </path>
-        <text class="star" x="35" y="35" style="font-size:20px; animation-delay:8.9s;">*</text>
-        <text class="star" x="405" y="22" style="font-size:14px; animation-delay:9.3s;">*</text>
-        <text class="star" x="145" y="205" style="font-size:16px; animation-delay:9.6s;">*</text>
-        <text class="star" x="478" y="95" style="font-size:22px; animation-delay:9.9s;">*</text>
-        <text class="star" x="85" y="145" style="font-size:14px; animation-delay:10.2s;">*</text>
-        <text class="star" x="318" y="235" style="font-size:18px; animation-delay:10.5s;">*</text>
-        <text class="star" x="15" y="225" style="font-size:16px; animation-delay:10.8s;">*</text>
-        <text class="star" x="248" y="20" style="font-size:20px; animation-delay:11.1s;">*</text>
-        <text class="star" x="465" y="205" style="font-size:14px; animation-delay:11.4s;">*</text>
-        <text class="star" x="125" y="45" style="font-size:18px; animation-delay:11.7s;">*</text>
-        <text class="star" x="378" y="145" style="font-size:16px; animation-delay:12.0s;">*</text>
-        <text class="star" x="55" y="185" style="font-size:20px; animation-delay:12.3s;">*</text>
-        <text class="star" x="218" y="115" style="font-size:14px; animation-delay:12.6s;">*</text>
-        <text class="star" x="495" y="245" style="font-size:18px; animation-delay:12.9s;">*</text>
+                <a href="https://fabioamato77.github.io/Mappa-benzina/mappa_carburanti.html" class="star-link" target="_blank" rel="noopener" aria-label="Mappa prezzi carburanti" data-name="Mappa prezzi carburanti"><text class="star" x="35" y="35" style="font-size:20px; animation-delay:8.9s;">*</text></a>
+        <a href="https://fabioamato77.github.io/temperature/compared_heat_italia_.html" class="star-link" target="_blank" rel="noopener" aria-label="Temperatura Italia 2003 → 2026" data-name="Temperatura Italia 2003 → 2026"><text class="star" x="405" y="22" style="font-size:14px; animation-delay:9.3s;">*</text></a>
+        <a href="https://fabioamato77.github.io/Mappa-benzina/convenienza-autostrada.html" class="star-link" target="_blank" rel="noopener" aria-label="Conviene uscire?" data-name="Conviene uscire?"><text class="star" x="145" y="205" style="font-size:16px; animation-delay:9.6s;">*</text></a>
+        <a href="https://fabioamato77.github.io/temperature/temperatura_globale_interattivo_2.html" class="star-link" target="_blank" rel="noopener" aria-label="Temperatura globale — ERA5" data-name="Temperatura globale — ERA5"><text class="star" x="478" y="95" style="font-size:22px; animation-delay:9.9s;">*</text></a>
+        <a href="https://fabioamato77.github.io/Mappa-benzina/prezzi_carburanti_con_senza_tasse.html" class="star-link" target="_blank" rel="noopener" aria-label="Prezzi carburanti, con e senza tasse" data-name="Prezzi carburanti, con e senza tasse"><text class="star" x="85" y="145" style="font-size:14px; animation-delay:10.2s;">*</text></a>
+        <a href="https://fabioamato77.github.io/nepal/frana_ghiacciaio_nepal.html" class="star-link" target="_blank" rel="noopener" aria-label="Frana del ghiacciaio in Nepal" data-name="Frana del ghiacciaio in Nepal"><text class="star" x="318" y="235" style="font-size:18px; animation-delay:10.5s;">*</text></a>
+        <a href="https://fabioamato77.github.io/prezzi/prezzi_consumo_ecoicop.html" class="star-link" target="_blank" rel="noopener" aria-label="Prezzi al consumo — ECOICOP" data-name="Prezzi al consumo — ECOICOP"><text class="star" x="15" y="225" style="font-size:16px; animation-delay:10.8s;">*</text></a>
+        <a href="https://fabioamato77.github.io/prezzi/prezzi_consumo_alimentari.html" class="star-link" target="_blank" rel="noopener" aria-label="Prezzi al consumo — Alimentari" data-name="Prezzi al consumo — Alimentari"><text class="star" x="248" y="20" style="font-size:20px; animation-delay:11.1s;">*</text></a>
+        <a href="https://fabioamato77.github.io/elezioni/mappa_sachsen_anhalt_2026.html" class="star-link" target="_blank" rel="noopener" aria-label="Landtagswahl Sassonia-Anhalt 2026" data-name="Landtagswahl Sassonia-Anhalt 2026"><text class="star" x="465" y="205" style="font-size:14px; animation-delay:11.4s;">*</text></a>
+        <a href="https://public.flourish.studio/visualisation/27174348/" class="star-link" target="_blank" rel="noopener" aria-label="Anomalie mensili temperatura" data-name="Anomalie mensili temperatura"><text class="star" x="125" y="45" style="font-size:18px; animation-delay:11.7s;">*</text></a>
+        <a href="https://public.flourish.studio/visualisation/29337074/" class="star-link" target="_blank" rel="noopener" aria-label="Mappa datacenter" data-name="Mappa datacenter"><text class="star" x="378" y="145" style="font-size:16px; animation-delay:12.0s;">*</text></a>
+        <a href="https://public.flourish.studio/visualisation/27978407/" class="star-link" target="_blank" rel="noopener" aria-label="Le basi in Italia" data-name="Le basi in Italia"><text class="star" x="55" y="185" style="font-size:20px; animation-delay:12.3s;">*</text></a>
+        <a href="https://public.flourish.studio/visualisation/27790007/" class="star-link" target="_blank" rel="noopener" aria-label="La classifica della MotoGP" data-name="La classifica della MotoGP"><text class="star" x="218" y="115" style="font-size:14px; animation-delay:12.6s;">*</text></a>
+        <a href="https://www.datawrapper.de/_/szE8u/" class="star-link" target="_blank" rel="noopener" aria-label="Reddito disponibile per nucleo familiare" data-name="Reddito disponibile per nucleo familiare"><text class="star" x="495" y="245" style="font-size:18px; animation-delay:12.9s;">*</text></a>
+        <a href="https://www.datawrapper.de/_/lFpXz/" class="star-link" target="_blank" rel="noopener" aria-label="Quanto guadagnano le partite Iva" data-name="Quanto guadagnano le partite Iva"><text class="star" x="440" y="150" style="font-size:16px; animation-delay:13.2s;">*</text></a>
 
         
       </svg>
@@ -301,101 +377,6 @@
           14mila battute alla volta. La trovi
           <a href="https://shop.ilfattoquotidiano.it/newsletter/estintori-di-fabio-amato/">qui</a>.
         </p>
-      </div>
-    </section>
-
-    <section class="section" id="progetti">
-      <h2 style="text-align:center;">Progetti recenti</h2>
-      <p class="section-note" style="text-align:center; margin-left:auto; margin-right:auto;">Una selezione di mappe, dashboard e piccoli strumenti pubblicati o in lavorazione.</p>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/Mappa-benzina/mappa_carburanti.html">Mappa prezzi carburanti</a></h3>
-        <span class="tag">Leaflet.js</span>
-        <p>Prezzi del carburante lungo le autostrade italiane, aggiornati e cercabili su mappa.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/temperature/compared_heat_italia_.html">Temperatura Italia — 2003 → 2026</a></h3>
-        <span class="tag">Leaflet · ERA5-Land</span>
-        <p>Confronto giorno per giorno tra l'estate 2026 e l'estate 2003, con uno slider temporale e una modalità differenza.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/Mappa-benzina/convenienza-autostrada.html">Conviene uscire?</a></h3>
-        <span class="tag">Calcolatore</span>
-        <p>Un piccolo strumento per decidere se conviene lasciare l'autostrada per fare rifornimento, in base ai prezzi vicini.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/temperature/temperatura_globale_interattivo_2.html">Temperatura globale — ERA5</a></h3>
-        <span class="tag">Chart.js</span>
-        <p>Serie giornaliera della temperatura media globale, in stile "spaghetti chart".</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/Mappa-benzina/prezzi_carburanti_con_senza_tasse.html">Prezzi carburanti, con e senza tasse</a></h3>
-        <span class="tag">Leaflet.js</span>
-        <p>Quanto pesano le accise sul prezzo alla pompa, a confronto sulla stessa mappa.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/nepal/frana_ghiacciaio_nepal.html">Frana del ghiacciaio in Nepal</a></h3>
-        <span class="tag">Mappa</span>
-        <p>Ricostruzione geografica della frana glaciale e delle aree coinvolte.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/prezzi/prezzi_consumo_ecoicop.html">Prezzi al consumo — ECOICOP</a></h3>
-        <span class="tag">Dashboard</span>
-        <p>Andamento dei prezzi al consumo per categoria di spesa, secondo la classificazione ECOICOP.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/prezzi/prezzi_consumo_alimentari.html">Prezzi al consumo — Alimentari</a></h3>
-        <span class="tag">Dashboard</span>
-        <p>Come sono cambiati nel tempo i prezzi dei generi alimentari.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://fabioamato77.github.io/elezioni/mappa_sachsen_anhalt_2026.html">Landtagswahl Sassonia-Anhalt 2026</a></h3>
-        <span class="tag">Dashboard HTML</span>
-        <p>Risultati comunali, tabelle e swing per le elezioni regionali tedesche.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://public.flourish.studio/visualisation/27174348/">Anomalie mensili temperatura</a></h3>
-        <span class="tag">Flourish</span>
-        <p>Una heatmap mese per mese delle anomalie di temperatura.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://public.flourish.studio/visualisation/29337074/">Mappa datacenter</a></h3>
-        <span class="tag">Flourish · Mappa 3D</span>
-        <p>Dove si trovano i data center in Italia, su una mappa tridimensionale.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://public.flourish.studio/visualisation/27978407/">Le basi in Italia</a></h3>
-        <span class="tag">Flourish · Mappa 3D</span>
-        <p>Le basi militari presenti sul territorio italiano, su una mappa tridimensionale.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://public.flourish.studio/visualisation/27790007/">La classifica della MotoGP</a></h3>
-        <span class="tag">Flourish · Tabella</span>
-        <p>La classifica piloti, aggiornata gara dopo gara.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://www.datawrapper.de/_/szE8u/">Reddito disponibile per nucleo familiare</a></h3>
-        <span class="tag">Datawrapper</span>
-        <p>Come è cambiato il reddito disponibile delle famiglie tra il 2007 e il 2025.</p>
-      </div>
-
-      <div class="project">
-        <h3><a class="title-link" href="https://www.datawrapper.de/_/lFpXz/">Quanto guadagnano le partite Iva</a></h3>
-        <span class="tag">Datawrapper</span>
-        <p>Redditi medi dei lavoratori autonomi soggetti a ISA, per categoria.</p>
       </div>
     </section>
 
@@ -428,6 +409,17 @@
     </footer>
   </div>
 
+  <div id="projectTooltip" class="project-tooltip" aria-hidden="true">
+    <div class="project-tooltip-imgwrap">
+      <img class="project-tooltip-img" src="" alt="">
+    </div>
+    <div class="project-tooltip-body">
+      <div class="project-tooltip-title"></div>
+      <div class="project-tooltip-url"></div>
+      <div class="project-tooltip-hint">Tocca di nuovo per aprire ↗</div>
+    </div>
+  </div>
+
 <script>
   var titles = [
     "Visto che non so scrivere<br>uso i numeri.",
@@ -442,6 +434,89 @@
   if (titleEl) {
     titleEl.innerHTML = titles[Math.floor(Math.random() * titles.length)];
   }
+
+  (function(){
+    var tooltip = document.getElementById('projectTooltip');
+    var img = tooltip.querySelector('.project-tooltip-img');
+    var titleBox = tooltip.querySelector('.project-tooltip-title');
+    var urlBox = tooltip.querySelector('.project-tooltip-url');
+    var links = document.querySelectorAll('.star-link');
+    var currentUrl = null;
+    var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    if (isTouch) {
+      tooltip.classList.add('touch-mode');
+    }
+
+    function shortUrl(u){
+      return u.replace(/^https?:\/\//, '').replace(/\/$/, '');
+    }
+
+    function position(rect){
+      var tw = tooltip.offsetWidth || 280;
+      var th = tooltip.offsetHeight || 260;
+      var left = rect.left + rect.width / 2 - tw / 2;
+      var top = rect.top - th - 14;
+      if (top < 8) { top = rect.bottom + 14; }
+      left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    }
+
+    function show(link){
+      var name = link.getAttribute('data-name');
+      var url = link.getAttribute('href');
+      titleBox.textContent = name;
+      urlBox.textContent = shortUrl(url);
+      if (currentUrl !== url) {
+        img.classList.remove('loaded');
+        img.src = 'https://s0.wp.com/mshots/v1/' + encodeURIComponent(url) + '?w=400&h=250';
+        currentUrl = url;
+      }
+      tooltip.classList.add('visible');
+      position(link.getBoundingClientRect());
+    }
+
+    function hide(){
+      tooltip.classList.remove('visible');
+    }
+
+    img.addEventListener('load', function(){ img.classList.add('loaded'); });
+
+    if (!isTouch) {
+      // desktop: hover/focus shows the preview, click always opens the link
+      links.forEach(function(link){
+        link.addEventListener('mouseenter', function(){ show(link); });
+        link.addEventListener('mouseleave', hide);
+        link.addEventListener('focus', function(){ show(link); });
+        link.addEventListener('blur', hide);
+      });
+    } else {
+      // touch: first tap previews (and blocks navigation), second tap on the
+      // same star opens the link. Tapping elsewhere closes the preview.
+      var activeLink = null;
+      links.forEach(function(link){
+        link.addEventListener('click', function(e){
+          if (activeLink !== link) {
+            e.preventDefault();
+            show(link);
+            activeLink = link;
+          } else {
+            hide();
+            activeLink = null;
+          }
+        });
+      });
+      document.addEventListener('touchstart', function(e){
+        if (activeLink && !e.target.closest('.star-link') && !e.target.closest('.project-tooltip')) {
+          hide();
+          activeLink = null;
+        }
+      }, {passive:true});
+    }
+
+    window.addEventListener('scroll', hide, {passive:true});
+  })();
 </script>
 </body>
 </html>
