@@ -250,14 +250,10 @@
 <body>
 
   <div class="wrap">
-    <div class="meta-line">
-      <span>Milano</span>
-      <span>Il Fatto Quotidiano</span>
-    </div>
+    <p class="byline" style="padding-top:40px;"><strong>Fabio Amato</strong> - caporedattore ilfattoquotidiano.it</p>
 
     <section class="hero">
-      <h1 style="text-align:center;">Visto che non so scrivere<br>uso i numeri.</h1>
-      <p class="byline" style="text-align:center;"><strong>Fabio Amato</strong> — caporedattore ilfattoquotidiano.it</p>
+      <h1 id="mainTitle" style="text-align:center;">Visto che non so scrivere<br>uso i numeri.</h1>
       <p class="lede" style="text-align:center; margin-left:auto; margin-right:auto;">
         Mi occupo di mappe interattive, dashboard e pipeline di analisi:
         dati climatici, elezioni, e altri strumenti editoriali per aiutare
@@ -432,5 +428,20 @@
     </footer>
   </div>
 
+<script>
+  var titles = [
+    "Visto che non so scrivere<br>uso i numeri.",
+    "Gru che tirano altre gru, travi che puntellano altre travi.",
+    "Lo scopo ultimo della vita è ricongiungerci, per sfinimento, con la sua fine.",
+    "Né tu puoi farmi tutte le domande, né io posso darti tutte le risposte.",
+    "Anche le idee sbagliate possono essere belle.",
+    "La gioventù non sa quel che può, la maturità non può quel che sa.",
+    "Se non parliamo siamo infelici, e se parliamo non ci comprendiamo."
+  ];
+  var titleEl = document.getElementById('mainTitle');
+  if (titleEl) {
+    titleEl.innerHTML = titles[Math.floor(Math.random() * titles.length)];
+  }
+</script>
 </body>
 </html>
