@@ -332,6 +332,30 @@
     font-family:'IBM Plex Mono', monospace;
   }
 </style>
+<script>
+  (function(){
+    try{
+      var palettes = [
+        { amber: '#E2812C', teal: '#4C86C9', bg: '#14202B', bgPanel: '#192734', ink: '#F1ECE3', inkDim: '#93A5B1', line: 'rgba(241,236,227,0.14)' },  // scuro: arancione + blu
+        { amber: '#4C86C9', teal: '#FFFFFF', bg: '#14202B', bgPanel: '#192734', ink: '#F1ECE3', inkDim: '#93A5B1', line: 'rgba(241,236,227,0.14)' },  // scuro: blu + bianco
+        { amber: '#E2812C', teal: '#4C86C9', bg: '#F1ECE3', bgPanel: '#E4DDCF', ink: '#14202B', inkDim: '#5B6B76', line: 'rgba(20,32,43,0.14)' }       // invertito: sfondo chiaro, testo scuro
+      ];
+      var key = 'fa_color_rotation_index';
+      var idx = parseInt(localStorage.getItem(key), 10);
+      if (isNaN(idx)) idx = 0;
+      var palette = palettes[idx % palettes.length];
+      var root = document.documentElement.style;
+      root.setProperty('--amber', palette.amber);
+      root.setProperty('--teal', palette.teal);
+      root.setProperty('--bg', palette.bg);
+      root.setProperty('--bg-panel', palette.bgPanel);
+      root.setProperty('--ink', palette.ink);
+      root.setProperty('--ink-dim', palette.inkDim);
+      root.setProperty('--line', palette.line);
+      localStorage.setItem(key, (idx + 1) % palettes.length);
+    } catch(e) {}
+  })();
+</script>
 </head>
 <body>
 
@@ -420,7 +444,7 @@
     </section>
 
     <footer>
-      Ultimo aggiornamento — 11 settembre 2026
+      Ultimo aggiornamento — 21 settembre 2026
     </footer>
   </div>
 
